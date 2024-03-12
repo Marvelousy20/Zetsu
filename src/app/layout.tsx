@@ -1,11 +1,17 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Inter, Darker_Grotesque } from "next/font/google";
 import "./globals.css";
 import localFont from "next/font/local";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 
 const inter = Inter({ subsets: ["latin"] });
+
+const darkerGrotesque = Darker_Grotesque({
+  subsets: ["latin"],
+  variable: "--font-darkerGrotesque",
+  display: "swap",
+});
 
 const SFProBold = localFont({
   src: "../../public/fonts/SF-Pro-Display-Bold.otf",
@@ -74,7 +80,7 @@ export default function RootLayout({
         />
       </head>
       <body
-        className={`${inter.className} ${SFProBold.variable} ${SFProLight.variable} ${SFProMedium.variable} ${SFProRegular.variable} ${SFProSemibold.variable} bg-white`}
+        className={`${inter.className} ${SFProBold.variable} ${SFProLight.variable} ${SFProMedium.variable} ${SFProRegular.variable} ${SFProSemibold.variable} ${darkerGrotesque.variable} bg-white`}
       >
         <Navbar />
         {children}

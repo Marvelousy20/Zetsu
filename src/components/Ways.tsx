@@ -4,7 +4,9 @@ export default function Ways() {
   return (
     <div className="bg-black mt-10 text-white px-5 mnd:px-0">
       <div className="max-w-[45rem] mx-auto py-7">
-        <h3 className="border-[#D9D9D9] border-b">How does it work?</h3>
+        <h3 className="border-[#D9D9D9] border-b font-darkerGrotesque font-normal text-2xl">
+          How does it work?
+        </h3>
 
         <div className="mt-8 grid grid-cols-1 md:grid-cols-2 gap-8">
           <Card
@@ -33,7 +35,7 @@ export default function Ways() {
         </div>
 
         <div className="flex justify-center">
-          <button className="w-[22.5rem] py-4 mt-8 bg-white text-black">
+          <button className="w-[22.5rem] py-4 mt-8 bg-white text-black font-SFProMedium">
             Get Started
           </button>
         </div>

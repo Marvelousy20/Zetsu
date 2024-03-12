@@ -16,6 +16,7 @@ module.exports = {
         SFProRegular: ["var(--font-SFProRegular)"],
         SFProMedium: ["var(--font-SFProMedium)"],
         SFProLight: ["var(--font-SFProLight)"],
+        darkerGrotesque: ["var(--font-darkerGrotesque)"],
       },
     },
   },

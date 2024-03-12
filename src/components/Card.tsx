@@ -24,7 +24,7 @@ export default function Card({ icon, title, description }: CardProps) {
           height={15}
           className="block md:hidden"
         />
-        <h3 className="font-SFProMedium text-2xl md:mt-4">{title}</h3>
+        <h3 className="font-darkerGrotesque font-medium text-2xl">{title}</h3>
       </div>
 
       <p className="font-SFProRegular mt-2">{description}</p>

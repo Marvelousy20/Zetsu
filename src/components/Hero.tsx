@@ -18,7 +18,7 @@ export default function Hero() {
   return (
     <div className="px-5 md:px-0 mt-5">
       <div className="md:text-center max-w-[28.5rem] mx-auto">
-        <h1 className="text-[2.375rem] md:text-5xl font-SFProSemibold">
+        <h1 className="text-[2.375rem] md:text-5xl font-darkerGrotesque font-semibold">
           Shop the Look
         </h1>
         <p className="text-2xl leading-[32px] font-SFProLight mt-2">
@@ -28,7 +28,6 @@ export default function Hero() {
       </div>
 
       <div className="mt-8 max-w-[22.5rem] mx-auto flex items-center flex-col">
-        {/* <div className="h-32 w-full border border-dashed"></div> */}
         <div {...getRootProps()} className="w-full border border-dashed p-4">
           <input {...getInputProps()} />
           {isDragActive ? (
@@ -55,7 +54,7 @@ export default function Hero() {
             </div>
           )}
         </div>
-        <button className="bg-black w-full text-white py-4 mt-6">
+        <button className="bg-black font-SFProMedium w-full text-white py-4 mt-6">
           Get Started
         </button>
       </div>

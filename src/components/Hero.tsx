@@ -45,10 +45,10 @@ export default function Hero() {
 
               <div>
                 <Image
-                  src="/images/upload1.svg"
+                  src="/images/upload.gif"
                   alt="uplaod1"
-                  width={100}
-                  height={105}
+                  width={200}
+                  height={205}
                 />
               </div>
             </div>

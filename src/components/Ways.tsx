@@ -2,7 +2,7 @@ import Card from "./Card";
 
 export default function Ways() {
   return (
-    <div className="bg-black mt-10 text-white">
+    <div className="bg-black mt-10 text-white px-5 mnd:px-0">
       <div className="max-w-[45rem] mx-auto py-7">
         <h3 className="border-[#D9D9D9] border-b">How does it work?</h3>
 

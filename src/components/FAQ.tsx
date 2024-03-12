@@ -72,15 +72,19 @@ const data = [
 
 export default function FAQ() {
   return (
-    <div className="mt-[2.37rem] max-w-[45rem] mx-auto">
+    <div className="mt-[2.37rem] max-w-[45rem] mx-auto px-5 mnd:px-0">
       <h3 className="border-b">FAQs</h3>
 
       <div>
         <Accordion type="single" collapsible className="w-full">
           {data.map((q, index) => (
             <AccordionItem value={q.value} key={index}>
-              <AccordionTrigger>{q.question}</AccordionTrigger>
-              <AccordionContent>{q.answer}</AccordionContent>
+              <AccordionTrigger className="text-start">
+                {q.question}
+              </AccordionTrigger>
+              <AccordionContent className="text-start">
+                {q.answer}
+              </AccordionContent>
             </AccordionItem>
           ))}
         </Accordion>

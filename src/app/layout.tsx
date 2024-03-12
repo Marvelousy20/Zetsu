@@ -2,7 +2,8 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import localFont from "next/font/local";
-// import SP from "../../public/fonts/"
+import Navbar from "@/components/Navbar";
+import Footer from "@/components/Footer";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -75,7 +76,9 @@ export default function RootLayout({
       <body
         className={`${inter.className} ${SFProBold.variable} ${SFProLight.variable} ${SFProMedium.variable} ${SFProRegular.variable} ${SFProSemibold.variable} bg-white`}
       >
+        <Navbar />
         {children}
+        <Footer />
       </body>
     </html>
   );

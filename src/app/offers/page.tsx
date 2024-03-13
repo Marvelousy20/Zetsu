@@ -1,11 +1,17 @@
 "use client";
 
 import Image from "next/image";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
 import { OfferProps } from "../../../types";
 import { Plus, Check } from "lucide-react";
+import { FileWithPath, useDropzone } from "react-dropzone";
+import router from "next/router";
+
+interface FileProps {
+  onDro: (acceptedFiles: FileWithPath[]) => void;
+}
 
 const data: OfferProps[] = [
   {
@@ -33,6 +39,20 @@ const data: OfferProps[] = [
 export default function Offers() {
   const [isLoading, setIsLoading] = useState(true);
   const [offers, setOffers] = useState(data);
+  const [uploadedImages, setUploadedImages] = useState<FileWithPath[]>([]);
+
+  const onDrop = useCallback((acceptedFiles: FileWithPath[]) => {
+    setUploadedImages(acceptedFiles);
+  }, []);
+
+  const { getRootProps, getInputProps, isDragActive } = useDropzone({ onDrop });
+
+  const uploadImages = () => {
+    if (uploadedImages.length >= 1) {
+      router.push("/offers");
+      console.log("uploaded images", uploadedImages);
+    }
+  };
 
   const handleSelected = (index: number) => {
     const updatedOffers = [...offers];
@@ -61,9 +81,12 @@ export default function Offers() {
           <div className="flex justify-between items-center">
             <div className="flex justify-between p-2 py-4 bg-[#F6FFED] md:gap-x-[8rem] items-center w-full md:w-auto">
               <h3 className="font-SFProRegular">Uploaded Successful</h3>
-              <button className="text-sm bg-[#fff] border bg-opacity-60 p-2">
-                Reupload
-              </button>
+              <div {...getRootProps()}>
+                <input {...getInputProps()} />
+                <button className="text-sm bg-[#fff] border bg-opacity-60 p-2">
+                  Reupload
+                </button>
+              </div>
             </div>
             <div className="md:block min-w-[240px] fixed md:static bottom-0 left-0 w-full md:w-auto">
               <Button className="w-full">

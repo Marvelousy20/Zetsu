@@ -11,7 +11,6 @@ interface FileProps {
 
 export default function Hero() {
   const [uploadedImages, setUploadedImages] = useState<FileWithPath[]>([]);
-  const [isLoading, setIsLoading] = useState(false);
   const router = useRouter();
 
   const onDrop = useCallback((acceptedFiles: FileWithPath[]) => {

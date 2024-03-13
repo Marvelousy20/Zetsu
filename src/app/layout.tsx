@@ -82,9 +82,9 @@ export default function RootLayout({
       <body
         className={`${inter.className} ${SFProBold.variable} ${SFProLight.variable} ${SFProMedium.variable} ${SFProRegular.variable} ${SFProSemibold.variable} ${darkerGrotesque.variable} bg-white`}
       >
-        <Navbar />
+        {/* <Navbar /> */}
         {children}
-        <Footer />
+        {/* <Footer /> */}
       </body>
     </html>
   );

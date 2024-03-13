@@ -1,19 +1,31 @@
 "use client";
 
-import { useCallback } from "react";
+import { useCallback, useState } from "react";
 import { FileWithPath, useDropzone } from "react-dropzone";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 
 interface FileProps {
   onDro: (acceptedFiles: FileWithPath[]) => void;
 }
 
 export default function Hero() {
+  const [uploadedImages, setUploadedImages] = useState<FileWithPath[]>([]);
+  const [isLoading, setIsLoading] = useState(false);
+  const router = useRouter();
+
   const onDrop = useCallback((acceptedFiles: FileWithPath[]) => {
-    console.log(acceptedFiles);
+    setUploadedImages(acceptedFiles);
   }, []);
 
   const { getRootProps, getInputProps, isDragActive } = useDropzone({ onDrop });
+
+  const uploadImages = () => {
+    if (uploadedImages.length >= 1) {
+      router.push("/offers");
+      console.log("uploaded images", uploadedImages);
+    }
+  };
 
   return (
     <div className="px-5 md:px-0 mt-5">
@@ -54,7 +66,10 @@ export default function Hero() {
             </div>
           )}
         </div>
-        <button className="bg-black font-SFProMedium w-full text-white py-4 mt-6">
+        <button
+          className="bg-black font-SFProMedium w-full text-white py-4 mt-6"
+          onClick={uploadImages}
+        >
           Get Started
         </button>
       </div>

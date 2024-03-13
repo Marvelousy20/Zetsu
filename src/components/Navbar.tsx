@@ -3,7 +3,7 @@ export default function Navbar() {
   return (
     <nav className="px-5 md:px-0 py-5 md:py-10 max-w-[45rem] mx-auto">
       <ul className="flex">
-        <li className="text-2xl font-bold">
+        <li className="text-2xl font-bold z-20">
           {/* <Image src="/logo1.png" alt="logo" width={100} height="100" /> */}
           Zetsu
         </li>

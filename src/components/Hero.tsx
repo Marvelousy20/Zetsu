@@ -4,7 +4,7 @@ import { useCallback, useState } from "react";
 import { FileWithPath, useDropzone } from "react-dropzone";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
-
+import { Button } from "./ui/button";
 interface FileProps {
   onDro: (acceptedFiles: FileWithPath[]) => void;
 }
@@ -66,12 +66,15 @@ export default function Hero() {
             </div>
           )}
         </div>
-        <button
+        {/* <button
           className="bg-black font-SFProMedium w-full text-white py-4 mt-6"
           onClick={uploadImages}
         >
           Get Started
-        </button>
+        </button> */}
+        <Button className="mt-6" onClick={uploadImages}>
+          Get Started
+        </Button>
       </div>
     </div>
   );

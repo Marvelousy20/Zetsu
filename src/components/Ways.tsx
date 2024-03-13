@@ -1,4 +1,5 @@
 import Card from "./Card";
+import { Button } from "./ui/button";
 
 export default function Ways() {
   return (
@@ -35,9 +36,12 @@ export default function Ways() {
         </div>
 
         <div className="flex justify-center">
-          <button className="w-[22.5rem] py-4 mt-8 bg-white text-black font-SFProMedium">
+          {/* <button className="w-[22.5rem] py-4 mt-8 bg-white text-black font-SFProMedium">
             Get Started
-          </button>
+          </button> */}
+          <Button variant="secondary" className="mt-8">
+            Get Started
+          </Button>
         </div>
       </div>
     </div>

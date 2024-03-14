@@ -4,37 +4,15 @@ import Image from "next/image";
 import { useState, useEffect, useCallback } from "react";
 import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
-import { OfferProps } from "../../../types";
 import { Plus, Check } from "lucide-react";
 import { FileWithPath, useDropzone } from "react-dropzone";
 import router from "next/router";
+import Link from "next/link";
+import { data } from "./data";
 
 interface FileProps {
-  onDro: (acceptedFiles: FileWithPath[]) => void;
+  onDrop: (acceptedFiles: FileWithPath[]) => void;
 }
-
-const data: OfferProps[] = [
-  {
-    img: "/images/shirt1.svg",
-    name: "AEL Contrast Irregular",
-    price: "75.99",
-    checked: false,
-  },
-
-  {
-    img: "/images/cap.svg",
-    name: "Abacus Links Rain Cap",
-    price: "30.41",
-    checked: false,
-  },
-
-  {
-    img: "/images/trousers.svg",
-    name: "Cargo trousers",
-    price: "22.73",
-    checked: false,
-  },
-];
 
 export default function Offers() {
   const [isLoading, setIsLoading] = useState(true);
@@ -77,7 +55,7 @@ export default function Offers() {
           <img src="/images/Loading/loading1.gif" alt="loading" />
         </div>
       ) : (
-        <div className="px-5 md:px-0">
+        <div className="px-5 md:px-0 pb-20 md:pb-0">
           <div className="flex justify-between items-center">
             <div className="flex justify-between p-2 py-4 bg-[#F6FFED] md:gap-x-[8rem] items-center w-full md:w-auto">
               <h3 className="font-SFProRegular">Uploaded Successful</h3>
@@ -88,7 +66,7 @@ export default function Offers() {
                 </button>
               </div>
             </div>
-            <div className="md:block min-w-[240px] fixed md:static bottom-0 left-0 w-full md:w-auto">
+            <div className="md:block min-w-[240px] z-20 fixed md:static bottom-0 left-0 w-full md:w-auto">
               <Button className="w-full">
                 <span>To Checkout (2)</span>{" "}
                 <span className="text-[#BFBFBF] ml-2"> &euro;30.41</span>
@@ -106,14 +84,16 @@ export default function Offers() {
               {offers.map((offer, index) => (
                 <div key={index}>
                   <div className="relative">
-                    <Image
-                      src={offer.img}
-                      alt={offer.img}
-                      width={165}
-                      height={165}
-                    />
+                    <Link href={`/offers/${offer.id}`}>
+                      <Image
+                        src={offer.img}
+                        alt={offer.img}
+                        width={165}
+                        height={165}
+                      />
+                    </Link>
 
-                    {offer.checked === true ? (
+                    {!offer.checked ? (
                       <div
                         className="h-8 w-8 bg-black rounded-full flex items-center justify-center absolute bottom-3 right-3"
                         onClick={() => handleSelected(index)}

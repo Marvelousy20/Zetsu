@@ -77,9 +77,9 @@ export default function ItemPage() {
             </div>
           </div>
 
-          <div className="md:block min-w-[240px] z-20 fixed md:static bottom-0 left-0 w-full md:w-auto mt-6">
+          <div className="md:block min-w-[240px] z-20 fixed md:static bottom-0 left-0 w-full md:w-auto md:mt-6">
             <Button className="w-full">
-              <span>To Checkout (2)</span>{" "}
+              <span>To Checkout (2)</span>
               <span className="text-[#BFBFBF] ml-2"> &euro;30.41</span>
               <span className="ml-5">
                 <ArrowRight />

@@ -9,6 +9,8 @@ import { FileWithPath, useDropzone } from "react-dropzone";
 import router from "next/router";
 import Link from "next/link";
 import { data } from "./data";
+import { useCart } from "@/context/cartContext";
+import { OfferProps } from "../../../types";
 
 interface FileProps {
   onDrop: (acceptedFiles: FileWithPath[]) => void;
@@ -18,6 +20,7 @@ export default function Offers() {
   const [isLoading, setIsLoading] = useState(true);
   const [offers, setOffers] = useState(data);
   const [uploadedImages, setUploadedImages] = useState<FileWithPath[]>([]);
+  const { cartItems, addToCart, removeFromCart } = useCart();
 
   const onDrop = useCallback((acceptedFiles: FileWithPath[]) => {
     setUploadedImages(acceptedFiles);
@@ -32,13 +35,18 @@ export default function Offers() {
     }
   };
 
-  const handleSelected = (index: number) => {
+  const handleSelected = (index: number, offer: OfferProps) => {
     const updatedOffers = [...offers];
     updatedOffers[index] = {
       ...updatedOffers[index],
       checked: !updatedOffers[index].checked,
     };
     setOffers(updatedOffers);
+    if (updatedOffers[index].checked) {
+      addToCart(offer);
+    } else {
+      removeFromCart(offer);
+    }
   };
 
   useEffect(() => {
@@ -68,7 +76,7 @@ export default function Offers() {
             </div>
             <div className="md:block min-w-[240px] z-20 fixed md:static bottom-0 left-0 w-full md:w-auto">
               <Button className="w-full">
-                <span>To Checkout (2)</span>{" "}
+                <span>To Checkout ({cartItems.length})</span>
                 <span className="text-[#BFBFBF] ml-2"> &euro;30.41</span>
                 <span className="ml-5">
                   <ArrowRight />
@@ -96,14 +104,14 @@ export default function Offers() {
                     {!offer.checked ? (
                       <div
                         className="h-8 w-8 bg-black rounded-full flex items-center justify-center absolute bottom-3 right-3"
-                        onClick={() => handleSelected(index)}
+                        onClick={() => handleSelected(index, offer)}
                       >
                         <Plus color="white" />
                       </div>
                     ) : (
                       <div
                         className="h-8 w-8 bg-[#D9F7BE] rounded-full flex items-center justify-center absolute bottom-3 right-3"
-                        onClick={() => handleSelected(index)}
+                        onClick={() => handleSelected(index, offer)}
                       >
                         <Check color="black" />
                       </div>

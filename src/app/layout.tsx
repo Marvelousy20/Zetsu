@@ -2,8 +2,7 @@ import type { Metadata } from "next";
 import { Inter, Darker_Grotesque } from "next/font/google";
 import "./globals.css";
 import localFont from "next/font/local";
-import Navbar from "@/components/Navbar";
-import Footer from "@/components/Footer";
+import { CartProvider } from "@/context/cartContext";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -82,9 +81,7 @@ export default function RootLayout({
       <body
         className={`${inter.className} ${SFProBold.variable} ${SFProLight.variable} ${SFProMedium.variable} ${SFProRegular.variable} ${SFProSemibold.variable} ${darkerGrotesque.variable} bg-white`}
       >
-        {/* <Navbar /> */}
-        {children}
-        {/* <Footer /> */}
+        <CartProvider>{children}</CartProvider>
       </body>
     </html>
   );

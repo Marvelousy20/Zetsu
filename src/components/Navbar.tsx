@@ -1,5 +1,11 @@
+"use client";
+
 import Image from "next/image";
+import { useCart } from "@/context/cartContext";
+
 export default function Navbar() {
+  const { cartItems } = useCart();
+
   return (
     <nav className="px-5 md:px-0 py-5 md:py-10 max-w-[45rem] mx-auto">
       <ul className="flex">
@@ -14,7 +20,13 @@ export default function Navbar() {
           <Image src="/images/User.svg" alt="user" width={24} height={24} />
         </li>
 
-        <li>
+        <li className="relative">
+          {cartItems.length >= 1 && (
+            <span className="h-[13px] w-[13px] rounded-full bg-[#CF1322] text-white text-[8px] absolute top-2 flex items-center justify-center right-0 top-0">
+              {cartItems.length}
+            </span>
+          )}
+
           <Image src="/images/Shopping.svg" alt="user" width={24} height={24} />
         </li>
       </ul>
